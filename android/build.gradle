@@ -1,0 +1,62 @@
+//import java.sql.Wrapper
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+
+//    repositories {
+////        google()
+//        jcenter()
+//        maven {
+//            url "https://maven.google.com"
+//        }
+//    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.google.gms:google-services:3.1.2'
+//        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.2-4'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+//    repositories {
+////        google()
+//        jcenter()
+//        maven {
+//            url "https://maven.google.com"
+//        }
+//    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+//subprojects {
+//    project.buildDir = "${rootProject.buildDir}/${project.name}"
+//    project.evaluationDependsOn(':app')
+//}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '2.14.1'
+//}
